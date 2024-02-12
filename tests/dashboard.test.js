@@ -27,18 +27,4 @@ test.describe('Dashboard', () => {
     });
 });
 
-test.describe('Dashboard', () => {
-    test('test', async ({ page }, testInfo) => {
-        test.slow();
- 
-        var testData = getData('Common');
-        const loginPage = new LoginPage(page, testInfo);
-        const dasboardPage = new DashboardPage(page,testInfo);
 
-        await loginPage.gotoLegacyApp();
-        await loginPage.loginToApplication(testData[0].userid, testData[0].password);
-        await dasboardPage.clickOnAddVisitButton();
-        await dasboardPage.validateAddVisitButton();
-       
-    });
-});

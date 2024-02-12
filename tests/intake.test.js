@@ -9,25 +9,23 @@ import helper from '../global/util/helper';
 
 
 test.describe('Inatke', () => {
-    test('TC-01 Verify that the search bar is editable ', async ({ page }, testInfo) => {
+    test('TC-01 Verify that the search bar is editable', async ({ page }, testInfo) => {
         test.slow();
  
         var testData = getData('Common');
         var Name = helper.generateRandomString(10);
         const loginPage = new LoginPage(page, testInfo);
         const intakePage = new IntakePage(page,testInfo);
-       
-
+    
         await loginPage.gotoLegacyApp();
         await loginPage.loginToApplication(testData[0].userid, testData[0].password);
         await intakePage.clickOnIntakeModule();
-        // await intakePage.clickOnSearchBar();
         await intakePage.vaildateSearchBarFieldEditable(Name);
     });
 });
 
 test.describe('Intake', () => {
-    test('TC-02 Verify whether the user can search for an existing patient by entering the patients first name ', async ({ page }, testInfo) => {
+    test('TC-02 Verify whether the user can search for an existing patient by entering the patients first name', async ({ page }, testInfo) => {
         test.slow();
  
         var testData = getData('Common');
@@ -44,7 +42,7 @@ test.describe('Intake', () => {
 });
 
 test.describe('Intake', () => {
-    test('TC-03 Verify whether the user can search for an existing patient by entering the patients last name ', async ({ page }, testInfo) => {
+    test('TC-03 Verify whether the user can search for an existing patient by entering the patients last name', async ({ page }, testInfo) => {
         test.slow();
  
         var testData = getData('Common');
@@ -61,7 +59,7 @@ test.describe('Intake', () => {
 });
 
 test.describe('Intake', () => {
-    test('TC-04 Verify that the search bar is editable ', async ({ page }, testInfo) => {
+    test('TC-04 Verify whether the user can search for an existing patient by entering the patients DOB(MM/DD/YYYY)', async ({ page }, testInfo) => {
         test.slow();
  
         var testData = getData('Common');
