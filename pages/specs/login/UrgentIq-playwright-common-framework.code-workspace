@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "../../../../urgentiq-playwright-common-framework"
+		},
+		{
+			"path": "../../.."
+		}
+	],
+	"settings": {}
+}
