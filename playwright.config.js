@@ -18,6 +18,7 @@ module.exports = defineConfig({
       use: { 
         ...devices['Desktop Chrome'], 
         channel: 'chrome',
+        viewport: { width: 1500, height: 730 },
         // viewport: { width: 2560, height: 1600 }, // Specify a specific viewport size
         browserContextOptions: {
           fullscreen: true,
