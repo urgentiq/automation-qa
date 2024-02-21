@@ -30,6 +30,7 @@ exports.PersonalInfoPage = class PersonalInfoPage {
    this.calenderIcon = this.page.locator("//div[@class='MuiFormControl-root MuiTextField-root css-l5roeo']//button[@aria-label='Choose date, selected date is May 10, 1994']//*[name()='svg']");
    this.previousIcon = this.page.locator("//button[@title='Previous month']//*[name()='svg']");
    this.selectdate = this.page.locator("//button[normalize-space()='1']");
+   this.errorMessage = this.page.locator("//p[normalize-space()='Date of Birth is required']");
    
 }
 
@@ -142,5 +143,10 @@ async clickOnCalenderIcon(){
   await this.page.waitForTimeout(3000);
  }
 
+ // Validate errpr message without filling the mandadaory filed
+async validatErrorMessage(alretMessg) {
+  this.errorMessage = this.page.locator(`xpath=(//p[normalize-space()='${alretMessg}'])`)
+  await this.func.isDisplayed( this.errorMessage , `Check if ${alretMessg} is displayed `)
+ }
 
 }

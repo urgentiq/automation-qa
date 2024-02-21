@@ -1669,3 +1669,7 @@
 {"level":"info","message":"\u001b[33m  Consider splitting slow test files to speed up parallel execution\u001b[39m"}
 {"level":"info","message":"\u001b[32m  6 passed\u001b[39m\u001b[2m (3.7m)\u001b[22m"}
 {"level":"info","message":""}
+{"level":"info","message":""}
+{"level":"info","message":""}
+{"level":"info","message":""}
+{"level":"info","message":""}
