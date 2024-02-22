@@ -24,7 +24,7 @@ exports.LoginPage = class LoginPage {
   }
 
   async gotoLegacyApp() {
-    var url="https://dev-ui.urgentiq.com/";
+    var url="https://uat-ui.urgentiq.com";
     successlog.info(url);
     await this.page.goto(url, { waitUntil: 'networkidle' },{ timeout: 30000 });  
   }

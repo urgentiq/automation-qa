@@ -28,10 +28,24 @@ exports.DemographicsPage = class DemographicsPage {
     this.streetDroupdownList = this.page.locator('//div[@id="react-select-2-listbox"]//div[@aria-disabled="false"]');
     this.streetDropdownNoResult = this.page.locator("//div[contains(text(),'No results')]");
     this.cityFiled = this.page.locator("//input[@id=':re:']");
-    this.menu = this.page.locator("//div[@class='css-1m92dtn']//button[@type='button']");  
+    this.menu = this.page.locator("//body/div[@id='__next']/div/div/div/div/div/button//*[name()='svg']");  
     this.firstName = this.page.locator("//input[@Name = 'firstName']");
     this.lastName = this.page.locator("//input[@Name = 'lastName']");
     this.dateOfBirth = this.page.locator("//input[@data-testid='birthDate']");
+    this.zipField = this.page.locator("//input[@name='demographicszip']");
+    this.emailField = this.page.locator("//input[@name='email']");
+    this.phoneField = this.page.locator("//input[@name='patientPhoneNumber']");
+    this.declinesToProvideEmailCheckBox = this.page.locator("//input[@name='declinesToProvideEmail']");
+    this.primaryCareProviderDropdown = this.page.locator("//div[@class='MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-feqhe6']//span[@class='MuiTouchRipple-root css-w0pj6f']");
+    this.createContactButton = this.page.locator("//button[normalize-space()='Create new Contact']");
+    this.providerFirstName = this.page.locator("//input[@Name = 'providerFirstName']");
+    this.providerLastName = this.page.locator("//input[@Name = 'providerLastName']");
+    this.providerPracticeName = this.page.locator("//input[@Name = 'providerPracticeName']");
+    this.providerSpecialty = this.page.locator("//input[@Name = 'providerSpecialty']");
+    this.providerStreet1 = this.page.locator("(//div[contains(text(),'Start typing an address...')])[2]");
+    this.addButton = this.page.locator("//button[normalize-space()='Add']");
+    this.providerPhoneNumber = this.page.locator("//input[@name='providerPhoneNumber']");
+    this.providerPhoneNumber = this.page.locator("//input[@name='faxPhoneNumber']");
 
   }
 
@@ -87,6 +101,11 @@ async vaildateStreetFieldEditable(Name){
   await this.page.waitForTimeout(3000);
  }
 
+ async validateStreet1AlretMessage(value) {
+  this.alretMSG = this.page.locator("//p[normalize-space()='"+value+"']");
+  await this.func.isDisplayed( this.alretMSG, `Check if ${value} is displayed `)
+  }
+
  //Validate Street Sugestion List
  async vaildateStreetSuggestionListOption() {
   try {
@@ -119,6 +138,87 @@ async vaildateStreetNoResult(Name){
     console.error('Error selecting gender option:', error);
   }
 }
+
+async validateSexAlretMessage(value) {
+  this.alretMSG = this.page.locator("//p[normalize-space()='"+value+"']");
+  await this.func.isDisplayed( this.alretMSG, `Check if ${value} is displayed `)
+  }
+  
+  async validateStree1AlretMessage(value) {
+    this.strret1alretMSG = this.page.locator("//p[normalize-space()='"+value+"']");
+    await this.func.isDisplayed( this.strret1alretMSG, `Check if ${value} is displayed `)
+  }
+  async validateStateAlretMessage(value) {
+    this.streetAlretMessg= this.page.locator("//p[normalize-space()='"+value+"']");
+    await this.func.isDisplayed( this.streetAlretMessg, `Check if ${value} is displayed `)
+  }
+
+  //City Text Section
+  async vaildateCityFiledEditable(CityName){
+    await this.page.waitForTimeout(1000);
+    await this.func.fillOnObject(this.zipField, "Enter City Name", CityName)
+    await this.func.clearText(this.cityFiled,"clear City Name")
+    await this.page.waitForTimeout(3000);
+   }
+
+  async validateCityAlretMessage(value) {
+    this.cityalretMSG = this.page.locator("//p[normalize-space()='"+value+"']");
+    await this.func.isDisplayed( this.cityalretMSG, `Check if ${value} is displayed `)
+  }
+  
+  //Zip/Postal Code Section
+  async vaildateZipFiledEditable(ZipCode){
+    await this.page.waitForTimeout(1000);
+    await this.func.fillOnObject(this.zipField, "Enter The Zip Code", ZipCode)
+    await this.func.clearText(this.cityFiled,"clear Zip Filed")
+    await this.page.waitForTimeout(3000);
+   }
+  
+   async validateZipAlretMessage(value) {
+    this.cityalretMSG = this.page.locator("//p[normalize-space()='"+value+"']");
+    await this.func.isDisplayed( this.cityalretMSG, `Check if ${value} is displayed `)
+  }
+  
+  //Email Field Section
+  async enterEmailField(Email){
+    await this.page.waitForTimeout(1000);
+    await this.func.fillOnObject(this.emailField, "Enter The Zip Code",Email)
+   }
+  
+  async vaildateEmailFieldEditable(Email){
+    await this.page.waitForTimeout(1000);
+    await this.func.fillOnObject(this.emailField, "Enter Email Text", Email)
+    await this.func.clearText(this.emailField,"clear Email Text")
+    await this.page.waitForTimeout(3000);
+   }
+  
+   async validateEmailAlretMessage(value) {
+    this.cityalretMessg = this.page.locator("//p[normalize-space()='"+value+"']");
+    await this.func.isDisplayed( this.cityalretMessg, `Check if ${value} is displayed `)
+  }
+  
+  async clickOnCheckBox() {
+    this.func.clickOnObject(this.declinesToProvideEmailCheckBox,"Click On  Declines To Provide Email Check Box ")
+    await this.page.waitForTimeout(1000);
+  }
+  
+  //Patient Phone Section
+  async enterPhoneField(PhoneNbr){
+    await this.page.waitForTimeout(1000);
+    await this.func.fillOnObject(this.phoneField, "Enter Phone Nbr",PhoneNbr)
+   }
+  
+  async vaildatePhoneNbrEditable(PhoneNbr){
+    await this.page.waitForTimeout(1000);
+    await this.func.fillOnObject(this.phoneField, "Enter Phone Nbr", PhoneNbr)
+    await this.func.clearText(this.phoneField,"clear Phone Nbr")
+    await this.page.waitForTimeout(3000);
+   }
+  
+   async validatePhoneNbrAlretMessage(value) {
+    this.phoneNbralretMessg = this.page.locator("//p[normalize-space()='"+value+"']");
+    await this.func.isDisplayed( this.phoneNbralretMessg, `Check if ${value} is displayed `)
+  }
 
 }
 
